@@ -1,7 +1,10 @@
 import "./App.css";
+import BasicTable from "./component/BasicTable";
 
 function App() {
-  return <div></div>;
+  return <div>
+    <BasicTable/>
+  </div>;
 }
 
 export default App;
