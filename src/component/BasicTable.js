@@ -13,8 +13,14 @@ const BasicTable = () => {
     // this can be simplified because of ES6 shorthand syntax -->({columns,data})
   });
   //   destructure some properties and methods from tableInstance
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    tableInstance;
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+    footerGroups,
+  } = tableInstance;
   return (
     <table {...getTableProps()}>
       <thead>
@@ -38,6 +44,15 @@ const BasicTable = () => {
           );
         })}
       </tbody>
+      <tfoot>
+        {footerGroups.map((footerGroup) => (
+          <tr {...footerGroup.getFooterGroupProps()}>
+            {footerGroup.headers.map((column) => (
+              <td {...column.getFooterGroupProps}>{column.render("Footer")}</td>
+            ))}
+          </tr>
+        ))}
+      </tfoot>
     </table>
   );
 };
